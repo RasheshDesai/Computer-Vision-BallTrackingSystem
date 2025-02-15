@@ -26,14 +26,6 @@ class YOLOBallTracking:
                 shutil.rmtree(directory)
             os.makedirs(directory, exist_ok=True)
 
-    def calculate_speed(self, current_center, prev_center):
-        """ Calculate the speed of the ball between two consecutive frames. """
-        if prev_center is None:
-            return 0  # Speed is zero if there's no previous center
-        # Euclidean distance between current and previous center points
-        dist = math.sqrt((current_center[0] - prev_center[0]) ** 2 + (current_center[1] - prev_center[1]) ** 2)
-        return dist * self.fps  # Distance per frame * FPS = speed in pixels per second
-
     def process_video(self):
         """Process video frames to track ball and calculate speed."""
         cap = cv2.VideoCapture(self.video_path)
@@ -73,14 +65,6 @@ class YOLOBallTracking:
                     # Calculate center of the ball
                     center = (int((x1 + x2) / 2), int((y1 + y2) / 2))
                     self.trajectory_points.append(center)
-
-                    # Calculate speed only when a ball is detected and previous center exists
-                    if self.prev_center is not None:
-                        speed = self.calculate_speed(center, self.prev_center)
-                        self.ball_speed = speed
-                        # Display speed on the frame
-                        cv2.putText(frame, f'Speed: {speed:.2f} px/s', (x1, y2 + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 2)
-                        print(f"Ball speed: {speed:.2f} pixels per second")  # Print speed to console
                     
                     # Update previous ball center for the next frame
                     self.prev_center = center
