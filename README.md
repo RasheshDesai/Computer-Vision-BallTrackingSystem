@@ -32,6 +32,15 @@ How to Run
 
      python track_ball.py
 
+6) The processed video will be saved as output_video.mp4.
+
+UnProcessed Frame Example:
+![Untracked](Frame/39.png)
+
+Processed Frame Example:  
+![Ball Tracking Sample](output/processed_39.png)  
+
+
 
 
 
