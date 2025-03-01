@@ -1,4 +1,4 @@
-# **YOLO Ball Tracking for Cricket**  
+# *YOLO Ball Tracking for Cricket* 
 
 ## **📌 Overview**  
     This project uses **YOLO (You Only Look Once)** and **OpenCV** to track a cricket ball's trajectory in a video. The script processes each frame, detects the ball, and overlays bounding boxes with real-time calculations. Finally, it generates an annotated output video with tracking visualizations. 
