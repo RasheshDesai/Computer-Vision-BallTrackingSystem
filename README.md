@@ -1,4 +1,4 @@
-# **YOLO Ball Tracking for Cricket**  
+# *YOLO Ball Tracking for Cricket* 
 
 ## **📌 Overview**  
     This project uses **YOLO (You Only Look Once)** and **OpenCV** to track a cricket ball's trajectory in a video. The script processes each frame, detects the ball, and overlays bounding boxes with real-time calculations. Finally, it generates an annotated output video with tracking visualizations. 
@@ -26,7 +26,7 @@ cd yolo-ball-tracking
 
       pip install opencv-python numpy torch ultralytics
    
-4) Place your video (WhiteBall.mp4) in the project folder.
+4) Place your video .mp4 file in the project folder.
 
 5) Run the Script
 
