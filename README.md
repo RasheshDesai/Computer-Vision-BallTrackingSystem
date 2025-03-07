@@ -26,7 +26,7 @@ cd yolo-ball-tracking
 
       pip install opencv-python numpy torch ultralytics
    
-4) Place your video (WhiteBall.mp4) in the project folder.
+4) Place your video .mp4 file in the project folder.
 
 5) Run the Script
 
