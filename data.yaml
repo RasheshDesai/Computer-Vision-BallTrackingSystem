@@ -1,0 +1,6 @@
+path: C:/Users/rashe/Cricket-Ball-Trajectory-prediction/Cricket-Ball-Trajectory-Prediction/cricket_ball_data
+train: train/images
+val: valid/images
+
+names: 
+  0: cricketBall
