@@ -74,7 +74,21 @@ class BallTracking:
                 self.trajectory_points.append(largest_center)
                 cv2.circle(frame, largest_center, largest_radius, (0, 255, 0), 2)  # Green circle around ball
 
-            
+            # COMMENTED OUT STUMPS DETECTION
+            # Use Inference Client to detect stumps
+            result = CLIENT.infer(frame_path, model_id="cricket-9czj5/3")
+            detected_stumps = []
+            for prediction in result["predictions"]:
+                x, y, width, height = int(prediction["x"]), int(prediction["y"]), int(prediction["width"]), int(prediction["height"])
+                detected_stumps.append((x, y, width, height))
+
+            if detected_stumps:
+                self.last_stump_position = detected_stumps  # Store last detected stump position
+                for x, y, width, height in detected_stumps:
+                    cv2.rectangle(frame, (x - width // 2, y - height // 2), (x + width // 2, y + height // 2), (0, 0, 255), 2)  # Red box around stumps
+            elif self.last_stump_position:
+                for x, y, width, height in self.last_stump_position:
+                    cv2.rectangle(frame, (x - width // 2, y - height // 2), (x + width // 2, y + height // 2), (255, 0, 0), 2)  # Blue box for last known stumps
 
             cv2.imwrite(f'{self.processed_frame_dir}/processed_frame_{cnt}.png', frame)
             cnt += 1
